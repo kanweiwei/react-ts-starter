@@ -1,0 +1,6 @@
+.ezy-preloadImg {
+    &:empty {
+        background: url('./preloadImg--error.png') no-repeat center center;
+        background-size: 50% auto;
+    }
+}
