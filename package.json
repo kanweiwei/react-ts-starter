@@ -65,8 +65,7 @@
     "scripts": {
         "dev": "concurrently \"npm run watch-css\" \"npm run start\"",
         "build-css": "node-sass-chokidar src/ -o src/",
-        "watch-css":
-            "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+        "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
         "start": "set PORT=3006&&node scripts/start.js",
         "build": "node scripts/build.js",
         "test": "node scripts/test.js --env=jsdom"
@@ -76,12 +75,22 @@
         "@types/node": "^9.4.0",
         "@types/react": "^16.0.35",
         "@types/react-dom": "^16.0.3",
+        "babel-loader": "^7.1.2",
+        "babel-plugin-import": "^1.6.3",
+        "babel-polyfill": "^6.26.0",
+        "babel-preset-react-app": "^3.1.1",
+        "less": "2.x",
+        "less-loader": "^4.0.5",
         "redux-devtools-extension": "^2.13.2",
         "typescript": "^2.7.1"
     },
     "jest": {
-        "collectCoverageFrom": ["src/**/*.{js,jsx,ts,tsx}"],
-        "setupFiles": ["<rootDir>/config/polyfills.js"],
+        "collectCoverageFrom": [
+            "src/**/*.{js,jsx,ts,tsx}"
+        ],
+        "setupFiles": [
+            "<rootDir>/config/polyfills.js"
+        ],
         "testMatch": [
             "<rootDir>/src/**/__tests__/**/*.ts?(x)",
             "<rootDir>/src/**/?(*.)(spec|test).ts?(x)"
@@ -91,8 +100,7 @@
         "transform": {
             "^.+\\.tsx?$": "<rootDir>/config/jest/typescriptTransform.js",
             "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
-            "^(?!.*\\.(js|jsx|mjs|css|json)$)":
-                "<rootDir>/config/jest/fileTransform.js"
+            "^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
         },
         "transformIgnorePatterns": [
             "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|ts|tsx)$"
@@ -115,13 +123,23 @@
         ],
         "globals": {
             "ts-jest": {
-                "tsConfigFile":
-                    "C:\\Users\\Administrator\\Desktop\\my-app\\tsconfig.test.json"
+                "tsConfigFile": "C:\\Users\\Administrator\\Desktop\\my-app\\tsconfig.test.json"
             }
         }
     },
     "babel": {
-        "presets": ["react-app"]
+        "presets": [
+            "react-app"
+        ],
+        "plugins": [
+            [
+                "import",
+                {
+                    "libraryName": "antd",
+                    "style": true
+                }
+            ]
+        ]
     },
     "eslintConfig": {
         "extends": "react-app"
